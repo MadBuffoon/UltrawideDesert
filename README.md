@@ -2,13 +2,11 @@
 
 **Camera overhaul for Crimson Desert, built for 32:9 and 21:9 ultrawide monitors.**
 
-[![NexusMods](https://img.shields.io/badge/NexusMods-UltraWide%20Desert-orange?style=for-the-badge&logo=nexusmods)](https://www.nexusmods.com/crimsondesert/mods/383)
+[![NexusMods](https://img.shields.io/badge/NexusMods-Download-orange?style=for-the-badge&logo=nexusmods)](https://www.nexusmods.com/crimsondesert/mods/383)
+[![GitHub Release](https://img.shields.io/badge/GitHub-Release%20v1.0-blue?style=for-the-badge&logo=github)](https://github.com/FitzDegenhub/UltrawideDesert/releases/tag/Release)
+[![VirusTotal](https://img.shields.io/badge/VirusTotal-0%20Detections-brightgreen?style=for-the-badge&logo=virustotal)](https://www.virustotal.com/gui/file/b206399424ca75a05a9b506faa9d73c1cd0eb7c5bf0fda021fd354f8df6ae703)
 
 > Updated for Patch 1.01.00 - Works while other camera mods are broken!
-
----
-
-**[Download from NexusMods](https://www.nexusmods.com/crimsondesert/mods/383)** | **[Download from GitHub Releases](https://github.com/FitzDegenhub/UltrawideDesert/releases)** | **[VirusTotal Scan (0 detections)](https://www.virustotal.com/gui/file/b206399424ca75a05a9b506faa9d73c1cd0eb7c5bf0fda021fd354f8df6ae703)**
 
 ## Features
 
