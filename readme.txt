@@ -1,17 +1,28 @@
 ================================================================
-  UltraWide Desert v2.0 - Widescreen Camera Mod
+  UltraWide Desert v1.2 - Python Builder
   Camera Overhaul for Crimson Desert
 ================================================================
   Created by @TheFitzy
   Inspired by @Maszradine (CDCamera) & @manymanecki (CrimsonCamera)
 ================================================================
 
+  >> This is the PYTHON BUILDER version.               <<
+  >> Requires Python 3.10+ with cryptography and lz4.  <<
+  >>                                                    <<
+  >> Most users should download the Pre-Built Presets   <<
+  >> version instead -- no Python required.             <<
 
-WHAT THIS MOD DOES
-------------------
-Overhauls the camera for ultrawide monitors (32:9 and 21:9).
-Adds wider FoV, 8 camera styles, steadycam smoothing, centered
-camera mode, combat zoom options, and horse camera fixes.
+
+WHEN TO USE THIS VERSION
+------------------------
+Use the Python Builder if:
+
+  - The game updated and the pre-built presets are outdated
+  - You want to customise camera values beyond the presets
+  - You prefer building from source
+
+If you just want to install the mod and play, download the
+"Pre-Built Presets" version from NexusMods instead.
 
 
 REQUIREMENTS
@@ -43,6 +54,9 @@ INSTALLATION
    +-- UltraWideDesert\          <-- this mod
    |   +-- install.bat
    |   +-- lib\
+   |   |   +-- camera_mod.py
+   |   |   +-- camera_rules.py
+   |   |   +-- ...
    |   +-- backups\              <-- created automatically
    +-- ...
 
@@ -54,35 +68,39 @@ INSTALLATION
    Step 3: Centered Camera
    Step 4: Combat Camera
 
+The Python builder reads your game's actual camera data,
+applies modifications on the fly, and patches the result
+back. This means it works with ANY game version -- even if
+a patch changes the camera data format.
+
 
 CAMERA STYLES
 -------------
 Recommended for Ultrawide:
-  [1] Cinematic     - Wide pullback, filmic exploration
-  [2] Western       - RDR2/Witcher 3 heroic framing
-  [3] Low Camera    - Hip-level, full body + wide horizon
-  [4] Default       - Vanilla framing + smoothing
+  [1] Panoramic     - Wide pullback, filmic exploration
+  [2] Frontier      - Heroic shoulder cam (RDR2 feel)
+  [3] Low Rider     - Hip-level, full body + wide horizon
+  [4] Smoothed      - Vanilla framing + smoothing
 
 More Styles:
-  [5] Immersive     - Close over-the-shoulder (16:9 feel)
-  [6] Very Low Cam  - Below hip, dramatic angle
-  [7] Ultra Low Cam - Ground-level, extreme low
-  [8] RE2 Style     - Tight horror-game OTS (16:9 feel)
+  [5] Close-Up      - Close over-the-shoulder (16:9 feel)
+  [6] Ground Level  - Below hip, dramatic angle
+  [7] Dirt Cam      - Ground-level, extreme low
+  [8] Survival      - Tight horror-game OTS (16:9 feel)
 
 
-FIELD OF VIEW
--------------
-  Change  |  Total  |  Notes
-  --------|---------|-------------------------------
-  None    |  40 deg |  Vanilla (not recommended)
-  +10     |  50 deg |  Minimal, good for 16:9
-  +15     |  55 deg |  Subtle improvement
-  +20     |  60 deg |  * Sweet spot for 21:9
-  +25     |  65 deg |  * Great for 21:9 + 32:9
-  +30     |  70 deg |  * Perfect for 32:9
-  +40     |  80 deg |  Extreme, slight fisheye
+HOW IT WORKS (TECHNICAL)
+------------------------
+The builder reads the game's 0.pamt index to locate
+playercamerapreset.xml inside 0.paz, decrypts it (ChaCha20),
+decompresses it (LZ4), applies your chosen camera modifications
+to the XML, size-matches the output to the exact compressed
+size, re-compresses, re-encrypts, and patches the archive
+in-place.
 
-  * = Recommended for widescreen monitors
+A backup of the original data is saved automatically on first
+run. The mod always starts from this vanilla backup so changes
+never stack on top of each other.
 
 
 CHANGING SETTINGS
@@ -96,7 +114,7 @@ UNINSTALLATION
 Option A: Run install.bat and choose [R] Restore Vanilla Camera
 Option B: Steam > Crimson Desert > Properties > Installed Files
           > "Verify integrity of game files"
-Option C: Delete the UltraWideDesert folder and verify game files
+Option C: Delete the UltraWideDesert folder and verify files
 
 
 TROUBLESHOOTING
@@ -119,18 +137,4 @@ Game crashes after installing:
   3. Delete the UltraWideDesert\backups folder
   4. Run the installer again
 
-
-COMPATIBILITY
--------------
-- Works with any version of Crimson Desert
-- Compatible with Steam, Epic Games, Xbox/Game Pass
-- NOT compatible with CDCamera, CrimsonCamera, or other
-  camera mods. Uninstall those first.
-- Safe for online play (pure XML data modification)
-
-
-CREDITS
--------
-@TheFitzy    - Creator of UltraWide Desert
-@Maszradine  - Original CDCamera (Camera Overhaul for Crimson Desert)
-@manymanecki  - CrimsonCamera (Improved Camera Utility)
+================================================================

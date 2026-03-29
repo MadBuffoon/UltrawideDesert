@@ -176,13 +176,221 @@ _SHARED_BASE = {
     'Player_Weapon_Default_RunFast': {'Fov': ('SET', '40')},
     'Player_Weapon_Default_RunFast_Follow': {'Fov': ('SET', '40')},
     'Player_Weapon_Default_Walk': {'Fov': ('SET', '40')},
+    'Player_Weapon_Guard': {'Fov': ('SET', '40')},
+    'Player_Weapon_Rush': {'Fov': ('SET', '40')},
+    'Player_Force_LockOn': {'Fov': ('SET', '40')},
+    'Player_LockOn_Titan': {'Fov': ('SET', '40')},
+    'Cinematic_LockOn': {'Fov': ('SET', '40')},
+    'Player_Weapon_Down': {'Fov': ('SET', '40')},
+    'Player_Weapon_Throw': {'Fov': ('SET', '40')},
+    'Player_Weapon_Throwed': {'Fov': ('SET', '40')},
+    'Player_Weapon_CatchThrow': {'Fov': ('SET', '40')},
+    'Player_Weapon_Zoom': {'Fov': ('SET', '40')},
+    'Player_Weapon_Zoom_Light': {'Fov': ('SET', '40')},
+    'Player_Weapon_Zoom_Out': {'Fov': ('SET', '40')},
+    'Player_Weapon_Aim_BossAttack': {'Fov': ('SET', '40')},
+    'Player_Weapon_Aim_SmallBossAttack': {'Fov': ('SET', '40')},
+    'Player_Ride_Aim_LockOn': {'Fov': ('SET', '40')},
+    'Player_PushingObject_TwoTarget': {'Fov': ('SET', '40')},
+    'Player_Ride_Warmachine': {'Fov': ('SET', '40')},
+    'Player_Ride_Warmachine_Aim': {'Fov': ('SET', '40')},
+    'Player_Ride_Warmachine_Dash': {'Fov': ('SET', '40')},
+    'Player_Ride_Broom': {'Fov': ('SET', '40')},
+    'Player_Swim_Default': {'Fov': ('SET', '40')},
 
-    # Two-target lock-on distance caps
+    # Lock-on behavior normalization — reduce aggressive zoom-in near enemies.
+    # Vanilla TwoTargetLockOn sections zoom in instantly with high clamp rates.
+    # We raise minimum distances, slow down zoom transitions, reduce target
+    # tracking weight, and soften screen clamping.
+    'Player_Weapon_LockOn': {
+        'Fov': ('SET', '40'),
+        'TargetRate': ('SET', '0.25'),
+        'ScreenClampRate': ('SET', '0.6'),
+        'ZoomInDampSpeed': ('SET', '2.0'),
+        'ZoomOutDampSpeed': ('SET', '5.0'),
+    },
+    'Player_Weapon_LockOn/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Weapon_TwoTarget': {
+        'Fov': ('SET', '40'),
+        'TargetRate': ('SET', '0.25'),
+        'ScreenClampRate': ('SET', '0.6'),
+        'LimitUnderDistance': ('SET', '3'),
+        'ZoomInDampSpeed': ('SET', '2.0'),
+        'ZoomOutDampSpeed': ('SET', '5.0'),
+    },
+    'Player_Weapon_TwoTarget/ZoomLevel[1]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Weapon_TwoTarget/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Interaction_TwoTarget': {
+        'Fov': ('SET', '40'),
+        'TargetRate': ('SET', '0.45'),
+        'ScreenClampRate': ('SET', '0.65'),
+    },
+    'Player_Interaction_TwoTarget/ZoomLevel[1]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Interaction_TwoTarget/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '8'),
+    },
     'Player_Interaction_TwoTarget/ZoomLevel[3]': {
         'MaxZoomDistance': ('SET', '10'),
     },
     'Player_Interaction_TwoTarget/ZoomLevel[4]': {
         'MaxZoomDistance': ('SET', '10'),
+    },
+    'Player_FollowLearn_LockOn_Boss': {
+        'Fov': ('SET', '40'),
+        'ScreenClampRate': ('SET', '0.7'),
+        'ZoomInDampSpeed': ('SET', '2.0'),
+        'ZoomOutDampSpeed': ('SET', '5.0'),
+    },
+    'Player_FollowLearn_LockOn_Boss/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '4.5'),
+    },
+    'Player_FollowLearn_LockOn_Boss/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6.5'),
+    },
+    'Player_Weapon_LockOn_System': {
+        'Fov': ('SET', '40'),
+        'TargetRate': ('SET', '0.3'),
+        'ScreenClampRate': ('SET', '0.65'),
+        'ZoomInDampSpeed': ('SET', '2.0'),
+        'ZoomOutDampSpeed': ('SET', '5.0'),
+    },
+    'Player_Weapon_LockOn_System/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Weapon_LockOn_System/ZoomLevel[3]': {
+        'Fov': ('SET', '40'),
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Weapon_LockOn_System/ZoomLevel[4]': {
+        'Fov': ('SET', '40'),
+    },
+    'Player_Revive_LockOn_System': {
+        'Fov': ('SET', '40'),
+        'ScreenClampRate': ('SET', '0.65'),
+        'ZoomInDampSpeed': ('SET', '2.0'),
+        'ZoomOutDampSpeed': ('SET', '5.0'),
+    },
+    'Player_Revive_LockOn_System/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Revive_LockOn_System/ZoomLevel[3]': {
+        'Fov': ('SET', '40'),
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Revive_LockOn_System/ZoomLevel[4]': {
+        'Fov': ('SET', '40'),
+    },
+    'Player_Weapon_LockOn_Non_Rotate': {
+        'Fov': ('SET', '40'),
+        'ScreenClampRate': ('SET', '0.6'),
+        'ZoomInDampSpeed': ('SET', '2.0'),
+    },
+    'Player_Weapon_LockOn_Non_Rotate/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Weapon_LockOn_WrestleOnly': {
+        'Fov': ('SET', '40'),
+        'ScreenClampRate': ('SET', '0.6'),
+    },
+    'Player_Weapon_LockOn_WrestleOnly/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_StartAggro_TwoTarget': {
+        'Fov': ('SET', '40'),
+        'ScreenClampRate': ('SET', '0.6'),
+        'ZoomInDampSpeed': ('SET', '2.0'),
+    },
+    'Player_Wanted_TwoTarget': {
+        'Fov': ('SET', '40'),
+        'ScreenClampRate': ('SET', '0.6'),
+        'ZoomInDampSpeed': ('SET', '2.0'),
+    },
+
+    # On-foot ZoomDistance normalization — vanilla changes distance when you
+    # walk/run causing constant zoom in/out. Anchor to idle values (3.4/6/8).
+    'Player_Basic_Default_Walk/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '3.4'),
+    },
+    'Player_Basic_Default_Walk/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Basic_Default_Walk/ZoomLevel[4]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Basic_Default_Run/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '3.4'),
+    },
+    'Player_Basic_Default_Run/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Basic_Default_Run/ZoomLevel[4]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Basic_Default_Runfast/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '3.4'),
+    },
+    'Player_Basic_Default_Runfast/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Basic_Default_Runfast/ZoomLevel[4]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+
+    # Combat ZoomDistance normalization — vanilla changes distance when you
+    # walk/run/guard causing constant zoom in/out during combat.
+    # Anchor everything to weapon idle values (3.4 / 6.0 / 8.0).
+    'Player_Weapon_Default_Walk/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '3.4'),
+    },
+    'Player_Weapon_Default_Walk/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Weapon_Default_Walk/ZoomLevel[4]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Weapon_Default_Run/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '3.4'),
+    },
+    'Player_Weapon_Default_Run/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Weapon_Default_Run/ZoomLevel[4]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Weapon_Default_RunFast/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '3.4'),
+    },
+    'Player_Weapon_Default_RunFast/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Weapon_Default_RunFast/ZoomLevel[4]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Weapon_Default_RunFast_Follow/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '3.4'),
+    },
+    'Player_Weapon_Default_RunFast_Follow/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Weapon_Default_RunFast_Follow/ZoomLevel[4]': {
+        'ZoomDistance': ('SET', '8'),
+    },
+    'Player_Weapon_Guard/ZoomLevel[2]': {
+        'ZoomDistance': ('SET', '3.4'),
+    },
+    'Player_Weapon_Guard/ZoomLevel[3]': {
+        'ZoomDistance': ('SET', '6'),
+    },
+    'Player_Weapon_Guard/ZoomLevel[4]': {
+        'ZoomDistance': ('SET', '8'),
     },
 
     # Player OffsetByVelocity elimination (remove camera sway on move)
@@ -323,6 +531,7 @@ _SHARED_BASE = {
 
     # Elephant mount
     'Player_Ride_Elephant': {
+        'Fov': ('SET', '40'),
         'FollowPitchSpeedRate': ('SET', '0.8'),
         'FollowYawSpeedRate': ('SET', '0.8'),
     },
@@ -339,6 +548,7 @@ _SHARED_BASE = {
 
     # Wyvern mount
     'Player_Ride_Wyvern': {
+        'Fov': ('SET', '50'),
         'FollowStartTime': ('SET', '1'),
         'FollowYawSpeedRate': ('SET', '0.8'),
     },
@@ -384,7 +594,7 @@ def _build_shared_steadycam():
 # Applied on top of the shared base. 'default' = no style changes.
 
 def _build_western():
-    """Western: raised UpOffset 0.4, ZoomDistance 2.5/5, wide shoulder."""
+    """Western: raised UpOffset 0.4, ZoomDistance 2.5/5/8, wide shoulder."""
     mods = {}
     for sec in _ALL_MAIN:
         mods[f'{sec}/ZoomLevel[2]'] = {
@@ -398,6 +608,7 @@ def _build_western():
         }
         mods[f'{sec}/ZoomLevel[4]'] = {
             'UpOffset': ('SET', '0.4'),
+            'ZoomDistance': ('SET', '8'),
         }
     # RightOffset 0.8 on ZL4 for walk/run + Weapon_Default (not Basic Default)
     mods['Player_Weapon_Default/ZoomLevel[4]']['RightOffset'] = ('SET', '0.8')
@@ -408,17 +619,20 @@ def _build_western():
         if sec.startswith('Player_Basic'):
             mods[f'{sec}/ZoomLevel[2]']['RightOffset'] = ('SET', '0.5')
 
-    # Weapon walk/run: tighter ZL2 ZoomDistance
-    for sec in _WALK_RUN:
-        if sec.startswith('Player_Weapon'):
-            mods[f'{sec}/ZoomLevel[2]']['ZoomDistance'] = ('SET', '2')
-
-    # Walk/Run ZL4 ZoomDistance (Run sections tighter at 5.0)
-    for sec in _WALK_RUN:
-        if sec.endswith('_Run'):
-            mods[f'{sec}/ZoomLevel[4]']['ZoomDistance'] = ('SET', '5.0')
-        else:
-            mods[f'{sec}/ZoomLevel[4]']['ZoomDistance'] = ('SET', '8')
+    # Guard uses same distances as idle
+    mods['Player_Weapon_Guard/ZoomLevel[2]'] = {
+        'UpOffset': ('SET', '0.4'),
+        'InDoorUpOffset': ('SET', '0.4'),
+        'ZoomDistance': ('SET', '2.5'),
+    }
+    mods['Player_Weapon_Guard/ZoomLevel[3]'] = {
+        'UpOffset': ('SET', '0.4'),
+        'ZoomDistance': ('SET', '5'),
+    }
+    mods['Player_Weapon_Guard/ZoomLevel[4]'] = {
+        'UpOffset': ('SET', '0.4'),
+        'ZoomDistance': ('SET', '8'),
+    }
 
     mods['Player_Basic_Default_Aim_Zoom/ZoomLevel[2]'] = {
         'UpOffset': ('SET', '0.4'),
@@ -432,36 +646,35 @@ def _build_western():
 
 
 def _build_cinematic():
-    """Cinematic: wider pullback with shoulder offset on movement."""
+    """Cinematic: wider pullback 3.0/6.0/9.0 with shoulder offset."""
     mods = {}
-    for sec in _DEFAULT_ONLY:
+    for sec in _ALL_MAIN:
         mods[f'{sec}/ZoomLevel[2]'] = {'ZoomDistance': ('SET', '3.0')}
-        mods[f'{sec}/ZoomLevel[3]'] = {'UpOffset': ('SET', '0.3')}
-    # Basic Default ZL4: no RightOffset change (keep vanilla 1.1)
-    mods['Player_Basic_Default/ZoomLevel[4]'] = {
-        'UpOffset': ('SET', '0.3'),
-        'ZoomDistance': ('SET', '9'),
-    }
-    # Weapon Default ZL4: set RightOffset
-    mods['Player_Weapon_Default/ZoomLevel[4]'] = {
-        'UpOffset': ('SET', '0.3'),
-        'ZoomDistance': ('SET', '9'),
-        'RightOffset': ('SET', '0.8'),
-    }
-    for sec in _WALK_RUN:
-        is_weapon = sec.startswith('Player_Weapon')
-        mods[f'{sec}/ZoomLevel[2]'] = {'ZoomDistance': ('SET', '3.0')}
-        if not is_weapon:
-            mods[f'{sec}/ZoomLevel[2]']['RightOffset'] = ('SET', '0.5')
-        mods[f'{sec}/ZoomLevel[3]'] = {'ZoomDistance': ('SET', '6.0')}
+        mods[f'{sec}/ZoomLevel[3]'] = {
+            'UpOffset': ('SET', '0.3'),
+            'ZoomDistance': ('SET', '6.0'),
+        }
         mods[f'{sec}/ZoomLevel[4]'] = {
-            'RightOffset': ('SET', '0.8'),
+            'UpOffset': ('SET', '0.3'),
             'ZoomDistance': ('SET', '9'),
         }
+    # RightOffset on walk/run + Weapon_Default ZL4
+    mods['Player_Weapon_Default/ZoomLevel[4]']['RightOffset'] = ('SET', '0.8')
+    for sec in _WALK_RUN:
+        mods[f'{sec}/ZoomLevel[4]']['RightOffset'] = ('SET', '0.8')
+        if not sec.startswith('Player_Weapon'):
+            mods[f'{sec}/ZoomLevel[2]']['RightOffset'] = ('SET', '0.5')
 
-    # Run sections: tighter ZL4 ZoomDistance
-    for sec in ('Player_Basic_Default_Run', 'Player_Weapon_Default_Run'):
-        mods[f'{sec}/ZoomLevel[4]']['ZoomDistance'] = ('SET', '6.0')
+    # Guard uses same distances
+    mods['Player_Weapon_Guard/ZoomLevel[2]'] = {'ZoomDistance': ('SET', '3.0')}
+    mods['Player_Weapon_Guard/ZoomLevel[3]'] = {
+        'UpOffset': ('SET', '0.3'),
+        'ZoomDistance': ('SET', '6.0'),
+    }
+    mods['Player_Weapon_Guard/ZoomLevel[4]'] = {
+        'UpOffset': ('SET', '0.3'),
+        'ZoomDistance': ('SET', '9'),
+    }
 
     mods['Player_Basic_Default_Aim_Zoom/ZoomLevel[2]'] = {
         'ZoomDistance': ('SET', '3.0'),
@@ -475,7 +688,7 @@ def _build_cinematic():
 
 
 def _build_immersive():
-    """Immersive: western pattern with closer ZoomDistances 2.0/4.0/6.0."""
+    """Immersive: closer ZoomDistances 2.0/4.0/6.0, consistent across states."""
     mods = {}
     for sec in _ALL_MAIN:
         mods[f'{sec}/ZoomLevel[2]'] = {
@@ -495,13 +708,21 @@ def _build_immersive():
     for sec in _WALK_RUN:
         mods[f'{sec}/ZoomLevel[2]']['RightOffset'] = ('SET', '0.5')
 
-    for sec in _WALK_RUN:
-        if sec.startswith('Player_Weapon'):
-            mods[f'{sec}/ZoomLevel[2]']['ZoomDistance'] = ('SET', '2')
-
-    # Run sections get tighter ZL4
-    for sec in ('Player_Basic_Default_Run', 'Player_Weapon_Default_Run'):
-        mods[f'{sec}/ZoomLevel[4]']['ZoomDistance'] = ('SET', '4.0')
+    # Guard uses same distances
+    mods['Player_Weapon_Guard/ZoomLevel[2]'] = {
+        'UpOffset': ('SET', '0.4'),
+        'InDoorUpOffset': ('SET', '0.4'),
+        'ZoomDistance': ('SET', '2.0'),
+    }
+    mods['Player_Weapon_Guard/ZoomLevel[3]'] = {
+        'UpOffset': ('SET', '0.4'),
+        'ZoomDistance': ('SET', '4.0'),
+    }
+    mods['Player_Weapon_Guard/ZoomLevel[4]'] = {
+        'UpOffset': ('SET', '0.4'),
+        'RightOffset': ('SET', '0.8'),
+        'ZoomDistance': ('SET', '6.0'),
+    }
 
     mods['Player_Basic_Default_Aim_Zoom/ZoomLevel[2]'] = {
         'UpOffset': ('SET', '0.4'),
@@ -518,6 +739,8 @@ def _build_immersive():
 
 def _build_lowcam_variant(basic_run_zl2_up, basic_zl3_indoor, weapon_zl3_indoor):
     """Low camera variants with per-section vertical offsets.
+
+    ZoomDistances consistent across all states: 2.5/5/8.
 
     Args:
         basic_run_zl2_up: ZL2 UpOffset for Basic Walk/Run/Runfast
@@ -540,9 +763,10 @@ def _build_lowcam_variant(basic_run_zl2_up, basic_zl3_indoor, weapon_zl3_indoor)
     mods['Player_Basic_Default/ZoomLevel[4]'] = {
         'UpOffset': ('SET', '0.0'),
         'InDoorUpOffset': ('SET', '0.0'),
+        'ZoomDistance': ('SET', '8'),
     }
 
-    # Basic Walk/Run/Runfast
+    # Basic Walk/Run/Runfast — same distances as idle
     for sec in ('Player_Basic_Default_Walk', 'Player_Basic_Default_Run',
                 'Player_Basic_Default_Runfast'):
         mods[f'{sec}/ZoomLevel[2]'] = {
@@ -551,23 +775,16 @@ def _build_lowcam_variant(basic_run_zl2_up, basic_zl3_indoor, weapon_zl3_indoor)
             'RightOffset': ('SET', '0.5'),
             'ZoomDistance': ('SET', '2.5'),
         }
-        zl3_dist = '5' if sec.endswith('_Walk') else '5.0'
         mods[f'{sec}/ZoomLevel[3]'] = {
             'UpOffset': ('SET', '0.0'),
             'InDoorUpOffset': ('SET', basic_zl3_indoor),
-            'ZoomDistance': ('SET', zl3_dist),
+            'ZoomDistance': ('SET', '5'),
         }
-        if sec.endswith('_Run'):
-            zl4_dist = '5.0'
-        elif sec.endswith('_Runfast'):
-            zl4_dist = '08'
-        else:
-            zl4_dist = '8'
         mods[f'{sec}/ZoomLevel[4]'] = {
             'UpOffset': ('SET', '0.0'),
             'InDoorUpOffset': ('SET', '0.0'),
             'RightOffset': ('SET', '0.8000'),
-            'ZoomDistance': ('SET', zl4_dist),
+            'ZoomDistance': ('SET', '8'),
         }
 
     # Weapon Default
@@ -585,35 +802,47 @@ def _build_lowcam_variant(basic_run_zl2_up, basic_zl3_indoor, weapon_zl3_indoor)
         'UpOffset': ('SET', '0.0'),
         'InDoorUpOffset': ('SET', '0.0'),
         'RightOffset': ('SET', '0.8000'),
+        'ZoomDistance': ('SET', '8'),
     }
 
-    # Weapon Walk/Run/RunFast/RunFast_Follow
+    # Weapon Walk/Run/RunFast/RunFast_Follow — same distances as idle
     for sec in ('Player_Weapon_Default_Walk', 'Player_Weapon_Default_Run',
                 'Player_Weapon_Default_RunFast',
                 'Player_Weapon_Default_RunFast_Follow'):
         mods[f'{sec}/ZoomLevel[2]'] = {
             'UpOffset': ('SET', '0.0'),
             'InDoorUpOffset': ('SET', '0.0'),
-            'ZoomDistance': ('SET', '2'),
+            'ZoomDistance': ('SET', '2.5'),
         }
-        zl3_dist = '5' if sec.endswith('_Walk') else '5.0'
         mods[f'{sec}/ZoomLevel[3]'] = {
             'UpOffset': ('SET', '0.0'),
             'InDoorUpOffset': ('SET', weapon_zl3_indoor),
-            'ZoomDistance': ('SET', zl3_dist),
+            'ZoomDistance': ('SET', '5'),
         }
-        if sec.endswith('_Run'):
-            zl4_dist = '5.0'
-        elif '_RunFast' in sec:
-            zl4_dist = '08'
-        else:
-            zl4_dist = '8'
         mods[f'{sec}/ZoomLevel[4]'] = {
             'UpOffset': ('SET', '0.0'),
             'InDoorUpOffset': ('SET', '0.0'),
             'RightOffset': ('SET', '0.8000'),
-            'ZoomDistance': ('SET', zl4_dist),
+            'ZoomDistance': ('SET', '8'),
         }
+
+    # Guard uses same distances
+    mods['Player_Weapon_Guard/ZoomLevel[2]'] = {
+        'UpOffset': ('SET', '0.0'),
+        'InDoorUpOffset': ('SET', '0.0'),
+        'ZoomDistance': ('SET', '2.5'),
+    }
+    mods['Player_Weapon_Guard/ZoomLevel[3]'] = {
+        'UpOffset': ('SET', '0.0'),
+        'InDoorUpOffset': ('SET', weapon_zl3_indoor),
+        'ZoomDistance': ('SET', '5'),
+    }
+    mods['Player_Weapon_Guard/ZoomLevel[4]'] = {
+        'UpOffset': ('SET', '0.0'),
+        'InDoorUpOffset': ('SET', '0.0'),
+        'RightOffset': ('SET', '0.8000'),
+        'ZoomDistance': ('SET', '8'),
+    }
 
     # Aim_Zoom
     mods['Player_Basic_Default_Aim_Zoom/ZoomLevel[2]'] = {
@@ -630,7 +859,7 @@ def _build_lowcam_variant(basic_run_zl2_up, basic_zl3_indoor, weapon_zl3_indoor)
 
 
 def _build_re2():
-    """RE2-style tight over-the-shoulder: ZoomDistance 1.8/3/6."""
+    """RE2-style tight over-the-shoulder: ZoomDistance 1.8/3/6, consistent."""
     mods = {}
     for sec in _ALL_MAIN:
         mods[f'{sec}/ZoomLevel[2]'] = {'ZoomDistance': ('SET', '1.8')}
@@ -640,29 +869,14 @@ def _build_re2():
         mods[f'{sec}/ZoomLevel[2]']['RightOffset'] = ('SET', '0.4')
         mods[f'{sec}/ZoomLevel[3]']['RightOffset'] = ('SET', '0.7')
 
-    # Weapon walk/run: tighter ZL2 ZoomDistance
-    for sec in _WALK_RUN:
-        if sec.startswith('Player_Weapon'):
-            mods[f'{sec}/ZoomLevel[2]']['ZoomDistance'] = ('SET', '1')
-
-    # Run/Runfast sections: ZL3 ZoomDistance='3.5'
-    _run_runfast = [
-        'Player_Basic_Default_Run',
-        'Player_Basic_Default_Runfast',
-        'Player_Weapon_Default_Run',
-        'Player_Weapon_Default_RunFast',
-        'Player_Weapon_Default_RunFast_Follow',
-    ]
-    for sec in _run_runfast:
-        mods[f'{sec}/ZoomLevel[3]']['ZoomDistance'] = ('SET', '3.5')
-
-    # ZL4 RightOffset='0.7000' for walk/run + Weapon_Default
+    # ZL4 RightOffset for walk/run + Weapon_Default
     for sec in _WALK_RUN + ['Player_Weapon_Default']:
         mods[f'{sec}/ZoomLevel[4]']['RightOffset'] = ('SET', '0.7000')
 
-    # Run sections: ZL4 ZoomDistance='3.5'
-    for sec in ('Player_Basic_Default_Run', 'Player_Weapon_Default_Run'):
-        mods[f'{sec}/ZoomLevel[4]']['ZoomDistance'] = ('SET', '3.5')
+    # Guard uses same distances
+    mods['Player_Weapon_Guard/ZoomLevel[2]'] = {'ZoomDistance': ('SET', '1.8')}
+    mods['Player_Weapon_Guard/ZoomLevel[3]'] = {'ZoomDistance': ('SET', '3')}
+    mods['Player_Weapon_Guard/ZoomLevel[4]'] = {'ZoomDistance': ('SET', '6')}
 
     mods['Player_Basic_Default_Aim_Zoom/ZoomLevel[2]'] = {
         'ZoomDistance': ('SET', '1.8'),
