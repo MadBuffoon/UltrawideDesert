@@ -626,8 +626,8 @@ def _build_bane_mods():
             if lvl == 4 and sec == 'Player_Basic_Default_Runfast':
                 entry['InDoorRightOffset'] = ('SET', '0.0')
 
-    # Gliding sections
-    _glide_bane = {
+    # Gliding and freefall
+    _air_bane = {
         'Player_Basic_Gliding/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
         'Player_Basic_Gliding/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
         'Player_Basic_Gliding_Fast/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
@@ -635,14 +635,121 @@ def _build_bane_mods():
         'Player_Basic_Gliding_Zoom/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
         'Player_Basic_Gliding_Fall/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
         'Player_Basic_Gliding_Fall/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Glide_Kick_Aim_Zoom/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Glide_Bow_Aim_Zoom/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_FreeFall_Start/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_FreeFall_Start/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_FreeFall/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_FreeFall/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_FreeFall_Lv2/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_FreeFall_Lv2/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_FreeFall_Aim/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_FreeFall_Aim/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_SuperJump/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_SuperJump/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
     }
-    mods.update(_glide_bane)
+    mods.update(_air_bane)
+
+    # Swimming, climbing, traversal
+    _traversal_bane = {
+        'Player_Swim_Default/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Swim_Default/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_PointClimb/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_PointClimb/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_PointClimb/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_PointClimb_Follow/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_PointClimb_Follow/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_PointClimb_Follow/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_CharacterClimb/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_CharacterClimb/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_CharacterClimb/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_Climb/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_Climb/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_RopeSwing/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_RopeSwing/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_RopeSwing/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_RopePull/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_RopePull/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_RopePull/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_WaterFallPass/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_WaterFallPass/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_WaterFallPass/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Wood_Hanging/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_Wagon/ZoomLevel[1]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_Wagon/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Wagon_Wait/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Wagon_Wait/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+    }
+    mods.update(_traversal_bane)
+
+    # Weapon combat states (guard, rush, zoom, lock-on, aim)
+    _combat_bane = {
+        'Player_Weapon_Guard/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Guard/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Guard/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Rush/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Rush/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Rush/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Down/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Down/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Down/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Indoor/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Zoom/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Zoom/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Zoom/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Zoom_Light/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Zoom_Light/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Zoom_Out/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_Zoom_Out/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_LockOn_System/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_LockOn_System/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Weapon_LockOn_System/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Revive_LockOn_System/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Revive_LockOn_System/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Revive_LockOn_System/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Cinematic_LockOn/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Cinematic_LockOn/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Cinematic_LockOn/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Hit_Throw/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Hit_Throw/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Hit_Throw/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+    }
+    mods.update(_combat_bane)
+
+    # Animal form
+    _animal_bane = {
+        'Player_Animal_Default/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Walk/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Walk/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Walk/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Run/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Run/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Run/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Runfast/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Runfast/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Animal_Default_Runfast/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+    }
+    mods.update(_animal_bane)
+
+    # Misc gameplay (rest, contemplation, fishing, etc.)
+    _misc_bane = {
+        'Player_Rest/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Rest/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Rest/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_NoZoom/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_NoZoom/ZoomLevel[4]': {'RightOffset': ('SET', '0.0')},
+        'Player_Basic_Teleport/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+    }
+    mods.update(_misc_bane)
 
     # Ride and mount sections
     _ride_bane = {
         'Player_Ride_Broom/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Broom/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Canoe/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
+        'Player_Ride_Canoe/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Elephant/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Elephant/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Horse/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
@@ -655,6 +762,7 @@ def _build_bane_mods():
         'Player_Ride_Horse_Att_Thrust/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Horse_Dash/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Horse_Dash/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
+        'Player_Ride_Horse_Dash_Att/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Horse_Dash_Att/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Horse_Fast_Run/ZoomLevel[2]': {'RightOffset': ('SET', '0.0')},
         'Player_Ride_Horse_Fast_Run/ZoomLevel[3]': {'RightOffset': ('SET', '0.0')},
