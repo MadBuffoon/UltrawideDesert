@@ -55,6 +55,72 @@ _BANE_SECTIONS = _BASIC_SECTIONS + [
     'Player_Basic_Default_Aim_Zoom',
 ] + _WEAPON_SECTIONS
 
+_HORSE_RIDE_SECTIONS = [
+    'Player_Ride_Horse',
+    'Player_Ride_Horse_Run',
+    'Player_Ride_Horse_Fast_Run',
+    'Player_Ride_Horse_Dash',
+    'Player_Ride_Horse_Dash_Att',
+    'Player_Ride_Horse_Att_Thrust',
+    'Player_Ride_Horse_Att_R',
+    'Player_Ride_Horse_Att_L',
+]
+
+
+def _build_mount_distances(scale):
+    """Scale all mount ZoomDistances relative to vanilla.
+
+    Vanilla distances:
+      Horse   ZL2=7.5  ZL3=10.5
+      Elephant ZL2=8   ZL3=11
+      Wyvern  ZL2=12  ZL3=16  ZL4=20
+      Canoe   ZL2=6   ZL3=9
+      Warmachine ZL2=9 ZL3=11
+      Broom   ZL2=10  ZL3=14
+    """
+    mods = {}
+    for sec in _HORSE_RIDE_SECTIONS:
+        mods[f'{sec}/ZoomLevel[2]'] = {
+            'ZoomDistance': ('SET', f'{7.5 * scale:.1f}'),
+        }
+        mods[f'{sec}/ZoomLevel[3]'] = {
+            'ZoomDistance': ('SET', f'{10.5 * scale:.1f}'),
+        }
+    mods['Player_Ride_Elephant/ZoomLevel[2]'] = {
+        'ZoomDistance': ('SET', f'{8 * scale:.1f}'),
+    }
+    mods['Player_Ride_Elephant/ZoomLevel[3]'] = {
+        'ZoomDistance': ('SET', f'{11 * scale:.1f}'),
+    }
+    mods['Player_Ride_Wyvern/ZoomLevel[2]'] = {
+        'ZoomDistance': ('SET', f'{12 * scale:.1f}'),
+    }
+    mods['Player_Ride_Wyvern/ZoomLevel[3]'] = {
+        'ZoomDistance': ('SET', f'{16 * scale:.1f}'),
+    }
+    mods['Player_Ride_Wyvern/ZoomLevel[4]'] = {
+        'ZoomDistance': ('SET', f'{20 * scale:.1f}'),
+    }
+    mods['Player_Ride_Canoe/ZoomLevel[2]'] = {
+        'ZoomDistance': ('SET', f'{6 * scale:.1f}'),
+    }
+    mods['Player_Ride_Canoe/ZoomLevel[3]'] = {
+        'ZoomDistance': ('SET', f'{9 * scale:.1f}'),
+    }
+    mods['Player_Ride_Warmachine/ZoomLevel[2]'] = {
+        'ZoomDistance': ('SET', f'{9 * scale:.1f}'),
+    }
+    mods['Player_Ride_Warmachine/ZoomLevel[3]'] = {
+        'ZoomDistance': ('SET', f'{11 * scale:.1f}'),
+    }
+    mods['Player_Ride_Broom/ZoomLevel[2]'] = {
+        'ZoomDistance': ('SET', f'{10 * scale:.1f}'),
+    }
+    mods['Player_Ride_Broom/ZoomLevel[3]'] = {
+        'ZoomDistance': ('SET', f'{14 * scale:.1f}'),
+    }
+    return mods
+
 
 # ── Shared base (always applied) ──────────────────────────────────
 # Smoothing, horse camera fixes, steadycam behavior, FoV normalization.
@@ -403,6 +469,8 @@ def _build_cinematic():
     mods['Player_Basic_Default_Aim_Zoom/ZoomLevel[3]'] = {
         'UpOffset': ('SET', '0.3'),
     }
+
+    _merge(mods, _build_mount_distances(1.2))
     return mods
 
 
@@ -443,6 +511,8 @@ def _build_immersive():
     mods['Player_Basic_Default_Aim_Zoom/ZoomLevel[3]'] = {
         'UpOffset': ('SET', '0.4'),
     }
+
+    _merge(mods, _build_mount_distances(0.75))
     return mods
 
 
@@ -600,6 +670,8 @@ def _build_re2():
     mods['Player_Basic_Default_Aim_Zoom/ZoomLevel[3]'] = {
         'ZoomDistance': ('SET', '3'),
     }
+
+    _merge(mods, _build_mount_distances(0.65))
     return mods
 
 
