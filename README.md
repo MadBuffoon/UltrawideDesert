@@ -8,7 +8,7 @@
 
 ---
 
-**[Download from NexusMods](https://www.nexusmods.com/crimsondesert/mods/383)** | **[Download from GitHub Releases](https://github.com/FitzDegenhub/UltrawideDesert/releases)**
+**[Download from NexusMods](https://www.nexusmods.com/crimsondesert/mods/383)** | **[Download from GitHub Releases](https://github.com/FitzDegenhub/UltrawideDesert/releases)** | **[VirusTotal Scan (0 detections)](https://www.virustotal.com/gui/file/b206399424ca75a05a9b506faa9d73c1cd0eb7c5bf0fda021fd354f8df6ae703)**
 
 ## Features
 
