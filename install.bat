@@ -25,16 +25,16 @@ set "PYTHON="
 
 where py >nul 2>nul
 if errorlevel 1 goto TRY_PYTHON
-py -3 --version >nul 2>nul
-if errorlevel 1 goto TRY_PYTHON
+for /f "delims=" %%V in ('py -3 --version 2^>nul') do set "_PV=%%V"
+if not defined _PV goto TRY_PYTHON
 set "PYTHON=py -3"
 goto PYTHON_OK
 
 :TRY_PYTHON
 where python >nul 2>nul
 if errorlevel 1 goto NO_PYTHON
-python --version >nul 2>nul
-if errorlevel 1 goto NO_PYTHON
+for /f "delims=" %%V in ('python --version 2^>nul') do set "_PV=%%V"
+if not defined _PV goto NO_PYTHON
 set "PYTHON=python"
 goto PYTHON_OK
 

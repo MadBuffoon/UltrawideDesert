@@ -22,16 +22,16 @@ set "PYTHON="
 :: Try Python Launcher first (py -3), then python on PATH
 where py >nul 2>nul
 if errorlevel 1 goto U_TRY_PYTHON
-py -3 --version >nul 2>nul
-if errorlevel 1 goto U_TRY_PYTHON
+for /f "delims=" %%V in ('py -3 --version 2^>nul') do set "_PV=%%V"
+if not defined _PV goto U_TRY_PYTHON
 set "PYTHON=py -3"
 goto U_PYTHON_OK
 
 :U_TRY_PYTHON
 where python >nul 2>nul
 if errorlevel 1 goto U_NO_PYTHON
-python --version >nul 2>nul
-if errorlevel 1 goto U_NO_PYTHON
+for /f "delims=" %%V in ('python --version 2^>nul') do set "_PV=%%V"
+if not defined _PV goto U_NO_PYTHON
 set "PYTHON=python"
 goto U_PYTHON_OK
 
