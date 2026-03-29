@@ -80,9 +80,51 @@ if errorlevel 1 (
 :DEPS_OK
 
 :: ============================================================
-:: GAME DIRECTORY (mod folder must be inside the game folder)
+:: FIND CRIMSON DESERT GAME DIRECTORY
 :: ============================================================
+
+set "GAMEDIR="
+
+:: === Common Steam library paths (one per line - easier and more reliable) ===
+set "paths[1]=C:\Program Files (x86)\Steam\steamapps\common\Crimson Desert"
+set "paths[2]=C:\Program Files\Steam\steamapps\common\Crimson Desert"
+set "paths[3]=D:\SteamLibrary\steamapps\common\Crimson Desert"
+set "paths[4]=E:\SteamLibrary\steamapps\common\Crimson Desert"
+set "paths[5]=F:\SteamLibrary\steamapps\common\Crimson Desert"
+
+:: You can easily add more drives/folders here:
+:: set "paths[6]=G:\SteamLibrary\steamapps\common\Crimson Desert"
+
+:: Check common paths
+for /L %%i in (1,1,5) do (
+    if exist "!paths[%%i]!\0010\0.paz" (
+        set "GAMEDIR=!paths[%%i]!"
+        goto :found_game
+    )
+)
+
+:: Fallback: try relative path from current mod folder
 for %%I in ("%SD%..") do set "GAMEDIR=%%~fI"
+if exist "!GAMEDIR!\0010\0.paz" goto :found_game
+
+:: ==================== Game not found ====================
+cls
+echo.
+echo ============================================================
+echo ERROR: Crimson Desert game directory not found.
+echo ============================================================
+echo.
+echo Alternatively, make sure the game is installed in one of these locations:
+echo.
+for /L %%i in (1,1,5) do echo     !paths[%%i]!
+echo.
+echo If your game is on another drive (G:, H:, etc.), edit the script and add the path.
+echo.
+pause
+exit /b
+
+:found_game
+echo Game directory found: !GAMEDIR!
 
 set "PAZ=!GAMEDIR!\0010\0.paz"
 if not exist "!PAZ!" (
