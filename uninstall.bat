@@ -21,29 +21,33 @@ set "PYTHON="
 
 :: Try Python Launcher first (py -3), then python on PATH
 where py >nul 2>nul
-if not errorlevel 1 (
-    py -3 --version >nul 2>nul
-    if not errorlevel 1 set "PYTHON=py -3"
-)
-if "!PYTHON!"=="" (
-    where python >nul 2>nul
-    if not errorlevel 1 (
-        python --version >nul 2>nul
-        if not errorlevel 1 set "PYTHON=python"
-    )
-)
-if "!PYTHON!"=="" (
-    echo.
-    echo   ERROR: Python 3 is not installed or not in PATH.
-    echo.
-    echo   Please install Python 3.10 or newer from:
-    echo   https://www.python.org/downloads/
-    echo.
-    echo   IMPORTANT: Check "Add python.exe to PATH" during install.
-    echo.
-    pause
-    exit /b
-)
+if errorlevel 1 goto U_TRY_PYTHON
+py -3 --version >nul 2>nul
+if errorlevel 1 goto U_TRY_PYTHON
+set "PYTHON=py -3"
+goto U_PYTHON_OK
+
+:U_TRY_PYTHON
+where python >nul 2>nul
+if errorlevel 1 goto U_NO_PYTHON
+python --version >nul 2>nul
+if errorlevel 1 goto U_NO_PYTHON
+set "PYTHON=python"
+goto U_PYTHON_OK
+
+:U_NO_PYTHON
+echo.
+echo   ERROR: Python 3 is not installed or not in PATH.
+echo.
+echo   Please install Python 3.10 or newer from:
+echo   https://www.python.org/downloads/
+echo.
+echo   IMPORTANT: Check "Add python.exe to PATH" during install.
+echo.
+pause
+exit /b
+
+:U_PYTHON_OK
 
 :: Check required packages (uses pip show to avoid -c flag AV false positives)
 !PYTHON! -m pip show cryptography >nul 2>nul

@@ -24,34 +24,38 @@ if not exist "%SD%lib\camera_mod.py" (
 set "PYTHON="
 
 where py >nul 2>nul
-if not errorlevel 1 (
-    py -3 --version >nul 2>nul
-    if not errorlevel 1 set "PYTHON=py -3"
-)
-if "!PYTHON!"=="" (
-    where python >nul 2>nul
-    if not errorlevel 1 (
-        python --version >nul 2>nul
-        if not errorlevel 1 set "PYTHON=python"
-    )
-)
-if "!PYTHON!"=="" (
-    cls
-    echo.
-    echo   ============================================================
-    echo.
-    echo    ERROR: Python 3 is not installed or not in PATH.
-    echo.
-    echo    Please install Python 3.10 or newer from:
-    echo    https://www.python.org/downloads/
-    echo.
-    echo    IMPORTANT: Check "Add python.exe to PATH" during install.
-    echo.
-    echo   ============================================================
-    echo.
-    pause
-    exit /b
-)
+if errorlevel 1 goto TRY_PYTHON
+py -3 --version >nul 2>nul
+if errorlevel 1 goto TRY_PYTHON
+set "PYTHON=py -3"
+goto PYTHON_OK
+
+:TRY_PYTHON
+where python >nul 2>nul
+if errorlevel 1 goto NO_PYTHON
+python --version >nul 2>nul
+if errorlevel 1 goto NO_PYTHON
+set "PYTHON=python"
+goto PYTHON_OK
+
+:NO_PYTHON
+cls
+echo.
+echo   ============================================================
+echo.
+echo    ERROR: Python 3 is not installed or not in PATH.
+echo.
+echo    Please install Python 3.10 or newer from:
+echo    https://www.python.org/downloads/
+echo.
+echo    IMPORTANT: Check "Add python.exe to PATH" during install.
+echo.
+echo   ============================================================
+echo.
+pause
+exit /b
+
+:PYTHON_OK
 
 :: Check required packages (uses pip show to avoid -c flag AV false positives)
 !PYTHON! -m pip show cryptography >nul 2>nul
