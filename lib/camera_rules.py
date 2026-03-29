@@ -192,6 +192,7 @@ _SHARED_BASE = {
 
     # Horse Dash
     'Player_Ride_Horse_Dash': {
+        'Fov': ('SET', '40'),
         'FollowPitchSpeedRate': ('SET', '0.8'),
         'FollowStartTime': ('SET', '1'),
         'FollowYawSpeedRate': ('SET', '0.8'),
@@ -207,6 +208,7 @@ _SHARED_BASE = {
 
     # Horse Dash Attack
     'Player_Ride_Horse_Dash_Att': {
+        'Fov': ('SET', '40'),
         'FollowPitchSpeedRate': ('SET', '0.8'),
         'FollowStartTime': ('SET', '1'),
         'FollowYawSpeedRate': ('SET', '0.8'),
@@ -225,18 +227,25 @@ _SHARED_BASE = {
 
     # Horse Thrust Attack
     'Player_Ride_Horse_Att_Thrust': {
+        'Fov': ('SET', '40'),
         'FollowPitchSpeedRate': ('SET', '0.8'),
         'FollowStartTime': ('SET', '1'),
         'FollowYawSpeedRate': ('SET', '0.8'),
     },
 
     # Horse Left/Right Attacks
+    'Player_Ride_Horse_Att_L': {
+        'Fov': ('SET', '40'),
+    },
     'Player_Ride_Horse_Att_L/CameraBlendParameter': {
         'BlendInTime': ('SET', '0.3'),
         'BlendOutTime': ('SET', '0.3'),
     },
     'Player_Ride_Horse_Att_L/OffsetByVelocity': {
         'OffsetLength': ('SET', '0.0'),
+    },
+    'Player_Ride_Horse_Att_R': {
+        'Fov': ('SET', '40'),
     },
     'Player_Ride_Horse_Att_R/CameraBlendParameter': {
         'BlendInTime': ('SET', '0.3'),
