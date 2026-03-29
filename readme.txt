@@ -6,11 +6,12 @@
   Inspired by @Maszradine (CDCamera) & @manymanecki (CrimsonCamera)
 ================================================================
 
-  >> This is the PYTHON BUILDER version.               <<
+  >> This is the PYTHON BUILDER version (from GitHub).  <<
   >> Requires Python 3.10+ with cryptography and lz4.  <<
   >>                                                    <<
   >> Most users should download the Pre-Built Presets   <<
-  >> version instead -- no Python required.             <<
+  >> from NexusMods instead -- no Python required.      <<
+  >> https://www.nexusmods.com/crimsondesert/mods/383   <<
 
 
 WHEN TO USE THIS VERSION
@@ -22,7 +23,8 @@ Use the Python Builder if:
   - You prefer building from source
 
 If you just want to install the mod and play, download the
-"Pre-Built Presets" version from NexusMods instead.
+Pre-Built Presets from NexusMods instead:
+https://www.nexusmods.com/crimsondesert/mods/383
 
 
 REQUIREMENTS

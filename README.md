@@ -1,16 +1,25 @@
-# UltraWide Desert - Widescreen Camera Mod
+# UltraWide Desert - Python Builder
 
 **Camera overhaul for Crimson Desert, built for 32:9 and 21:9 ultrawide monitors.**
 
-[![NexusMods](https://img.shields.io/badge/NexusMods-Download-orange?style=for-the-badge&logo=nexusmods)](https://www.nexusmods.com/crimsondesert/mods/383)
-[![GitHub Release](https://img.shields.io/badge/GitHub-Release%20v1.1-blue?style=for-the-badge&logo=github)](https://github.com/FitzDegenhub/UltrawideDesert/releases)
-[![VirusTotal](https://img.shields.io/badge/VirusTotal-0%20Detections-brightgreen?style=for-the-badge&logo=virustotal)](https://www.virustotal.com/gui/file/b206399424ca75a05a9b506faa9d73c1cd0eb7c5bf0fda021fd354f8df6ae703)
-
-> Updated for Patch 1.01.00 - Works while other camera mods are broken!
+[![NexusMods](https://img.shields.io/badge/NexusMods-Pre--Built%20Presets-orange?style=for-the-badge&logo=nexusmods)](https://www.nexusmods.com/crimsondesert/mods/383)
+[![GitHub Release](https://img.shields.io/badge/GitHub-Python%20Builder%20v1.2-blue?style=for-the-badge&logo=github)](https://github.com/FitzDegenhub/UltrawideDesert/releases)
 
 ![UltraWide Desert - 32:9 Gameplay](screenshot.png)
 
 ---
+
+> **Most users should grab the [Pre-Built Presets from NexusMods](https://www.nexusmods.com/crimsondesert/mods/383)** — no Python, no setup, just extract and play.
+>
+> This repo is the **Python Builder** for advanced users or when the game updates and the pre-built presets are outdated.
+
+---
+
+## When to Use This
+
+- The game updated and the NexusMods presets say "size mismatch"
+- You want to customise camera values beyond the 336 presets
+- You prefer building from source
 
 ## Features
 
@@ -20,23 +29,24 @@
 | **Adjustable FoV** | +10 to +40 degrees (up to 80 total) with per-aspect-ratio recommendations |
 | **Steadycam** | Eliminates camera sway and bobbing during movement |
 | **Centered Mode** | Places your character in the center of the screen instead of off to the left |
-| **Combat Zoom** | 3 levels - Default, Wider (+50%), Maximum (+100%) |
-| **Horse Fixes** | Smoothed FollowSpeed, DampSpeed, BlendTime, and OffsetByVelocity |
+| **Combat Zoom** | 3 levels — Default, Wider (+50%), Maximum (+100%) |
+| **Mount Fixes** | Consistent FoV and distance across Horse, Elephant, Wyvern, Warmachine, Broom |
+| **Combat Smoothing** | Reduced aggressive zoom during lock-on and shield combat |
 
 ## How It Works
 
-The mod dynamically patches `playercamerapreset.xml` inside the game's `0.paz` archive at runtime. No pre-built binaries, no DLL injection - just Python scripts that decrypt (ChaCha20), decompress (LZ4), modify the XML, size-match, recompress, re-encrypt, and write it back.
+The builder dynamically patches `playercamerapreset.xml` inside the game's `0.paz` archive. It decrypts (ChaCha20), decompresses (LZ4), modifies the XML, size-matches, recompresses, re-encrypts, and writes it back.
 
-Because it reads the game's file index dynamically, it auto-adapts to most game updates without needing a mod update.
+Because it reads the game's `0.pamt` index dynamically, **it auto-adapts to game updates** without needing a mod update.
 
 ## Requirements
 
-- **Python 3.10+** - [Download](https://www.python.org/downloads/) (check "Add python.exe to PATH" during install)
+- **Python 3.10+** — [Download](https://www.python.org/downloads/) (check "Add python.exe to PATH" during install)
 - **cryptography** and **lz4** packages (installed automatically by the installer)
 
 ## Installation
 
-1. Download and extract the zip
+1. Download the [latest release](https://github.com/FitzDegenhub/UltrawideDesert/releases) or clone this repo
 2. Move the `UltraWideDesert` folder into your Crimson Desert game directory:
 ```
 C:\Program Files (x86)\Steam\steamapps\common\Crimson Desert\
@@ -78,10 +88,10 @@ Crimson Desert/
 
 ## Credits
 
-- **[@TheFitzy](https://www.nexusmods.com/profile/TheFitzy)** - Creator of UltraWide Desert
-- **[@lazorr410](https://github.com/lazorr410)** - [crimson-desert-unpacker](https://github.com/lazorr410/crimson-desert-unpacker) - without which this mod would not exist
-- **[@Maszradine](https://www.nexusmods.com/profile/Maszradine)** - [CDCamera](https://www.nexusmods.com/crimsondesert/mods/65) - camera rules, steadycam system, and style presets
-- **[@manymanecki](https://www.nexusmods.com/profile/manymanecki)** - [CrimsonCamera](https://www.nexusmods.com/crimsondesert/mods/373) - dynamic PAZ modification approach
+- **[@TheFitzy](https://www.nexusmods.com/profile/TheFitzy)** — Creator of UltraWide Desert
+- **[@lazorr410](https://github.com/lazorr410)** — [crimson-desert-unpacker](https://github.com/lazorr410/crimson-desert-unpacker) — without which this mod would not exist
+- **[@Maszradine](https://www.nexusmods.com/profile/Maszradine)** — [CDCamera](https://www.nexusmods.com/crimsondesert/mods/65) — camera rules, steadycam system, and style presets
+- **[@manymanecki](https://www.nexusmods.com/profile/manymanecki)** — [CrimsonCamera](https://www.nexusmods.com/crimsondesert/mods/373) — dynamic PAZ modification approach
 
 ## License
 
